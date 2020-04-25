@@ -7,3 +7,13 @@ export const content = `Contrary to popular belief, Lorem Ipsum is not simply ra
 export const userName = 'Whiskered Fairy';
 
 export const helperArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+export const textCutter = (text) => {
+    let cutoutText = text;
+    if (cutoutText.length > 640) {
+        cutoutText = cutoutText.slice(0, 680);
+        cutoutText += ' ...';
+    }
+
+    return cutoutText;
+};

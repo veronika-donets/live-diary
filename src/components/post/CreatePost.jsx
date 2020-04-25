@@ -1,82 +1,91 @@
-import React, { useState } from 'react';
-import { Button, Form, Input, Message, TextArea } from 'semantic-ui-react';
+import React, { useEffect } from 'react';
+import {
+    Button,
+    Card,
+    Checkbox,
+    Container,
+    Form, Icon,
+    Message,
+    TextArea,
+} from 'semantic-ui-react';
+import { useForm } from 'react-hook-form';
 
 const CreatePost = () => {
-    const { uid, displayName, photoURL, email } = {};
+    const { register, errors, handleSubmit, setValue } = useForm();
 
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const [errorMessage, setErrorMessage] = useState(false);
+    useEffect(() => {
+        register({ name: 'title' }, { required: 'Title is required' });
+        register({ name: 'content' }, { required: 'Content is required' });
+        register({ name: 'isPrivate' });
+    }, []);
 
-    const changeTitle = (event) => {
-        setTitle(event.target.value);
-        setErrorMessage(false);
+    const handleChangeInput = (e, { name, value }) => {
+        setValue(name, value);
     };
 
-    const changeContent = (event) => {
-        setContent(event.target.value);
-        setErrorMessage(false);
+    const handleChangeCheckBox = (e, { name, checked }) => {
+        setValue(name, checked);
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const normalizeTitle = title.trim();
-        const normalizeContent = content.trim();
-
-        if (normalizeTitle && normalizeContent) {
-            const newPost = {
-                title: normalizeTitle,
-                content: normalizeContent,
-                stars: 0,
-                user: {
-                    uid,
-                    displayName,
-                    photoURL,
-                    email,
-                },
-                createdAt: new Date().getTime(),
-            };
-
-            setTitle('');
-            setContent('');
-            setErrorMessage(false);
-        } else {
-            setErrorMessage(true);
-        }
+    const onSubmit = (data) => {
+        console.log('data', data);
     };
 
     return (
-        <>
-            {errorMessage && (
-                <Message
-                    error
-                    header="Action Forbidden"
-                    content="Please fill all fields to submit the message."
-                />
-            )}
-            <Form>
-                <Input
-                    size="large"
-                    fluid
-                    placeholder="Title"
-                    onChange={changeTitle}
-                    value={title}
-                />
-                <br />
-            </Form>
-            <Form>
-                <TextArea
-                    placeholder="Write your post out there"
-                    onChange={changeContent}
-                    value={content}
-                />
-            </Form>
-            <Button attached="bottom" onClick={handleSubmit}>
-                Send
-            </Button>
-            <br />
-            <br />
-        </>
+        <Card fluid>
+            <Container className="create-post-container">
+                <Form onSubmit={handleSubmit(onSubmit)}>
+                    <Form.Input
+                        fluid
+                        placeholder={
+                            !errors.title ? 'Title' : errors.title.message
+                        }
+                        name="title"
+                        onChange={handleChangeInput}
+                        error={!!errors.title}
+                    />
+                    <TextArea
+                        placeholder="Write your post"
+                        style={{ minHeight: 200, marginBottom: 20 }}
+                        name="content"
+                        onChange={handleChangeInput}
+                        error={
+                            !!errors.content && {
+                                content: errors.content.message,
+                            }
+                        }
+                    />
+                    {errors.content && (
+                        <Message negative style={{ margin: 0 }}>
+                            <Message.Header>
+                                {errors.content.message}
+                            </Message.Header>
+                            <p>
+                                Please, write your post to the corresponding
+                                field
+                            </p>
+                        </Message>
+                    )}
+
+                    <div className="space-between main-text">
+
+                        <Form.Field
+                            control={Checkbox}
+                            required
+                            name="isPrivate"
+                            onChange={handleChangeCheckBox}
+                            error={
+                                errors.isPrivate && {
+                                    content: errors.isPrivate.message,
+                                }
+                            }
+                            label="Private"
+                        />
+                        <Button>Public</Button>
+                    </div>
+                </Form>
+            </Container>
+        </Card>
     );
 };
 

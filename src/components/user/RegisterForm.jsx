@@ -11,14 +11,7 @@ import {
 import { useForm } from 'react-hook-form';
 
 const RegisterForm = () => {
-    const {
-        register,
-        errors,
-        handleSubmit,
-        setValue,
-        triggerValidation,
-        getValues,
-    } = useForm();
+    const { register, errors, handleSubmit, setValue, getValues } = useForm();
 
     useEffect(() => {
         register(
@@ -36,7 +29,7 @@ const RegisterForm = () => {
             {
                 required: 'Please, enter your email',
                 pattern: {
-                    value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    value: /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                     message: 'Invalid email',
                 },
             }
@@ -193,7 +186,9 @@ const RegisterForm = () => {
                             label={
                                 <label>
                                     I agree to the{' '}
-                                    <a href="/terms-and-conditions">Terms and Conditions</a>
+                                    <a href="/terms-and-conditions">
+                                        Terms and Conditions
+                                    </a>
                                 </label>
                             }
                         />

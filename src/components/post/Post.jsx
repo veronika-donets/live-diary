@@ -10,28 +10,16 @@ import {
     Image,
     Rating,
 } from 'semantic-ui-react';
-import { content, helperArr, title } from '../../utils/utils';
+import { content, helperArr, textCutter, title } from '../../utils/utils';
 
 const Post = () => {
     const [isTextExpanded, setTextExpanded] = useState(false);
-    const [cardStyles, setCardStyles] = useState({
-        maxHeight: 200,
-        overflow: 'hidden',
-    });
 
     const readMore = () => {
-        setCardStyles({
-            maxHeight: '100%',
-            overflow: 'visible',
-        });
         setTextExpanded(true);
     };
 
     const readLess = () => {
-        setCardStyles({
-            maxHeight: 200,
-            overflow: 'hidden',
-        });
         setTextExpanded(false);
     };
 
@@ -72,8 +60,8 @@ const Post = () => {
                 <Feed>
                     <Feed className="column">
                         <Container textAlign="justified">
-                            <p className="main-text" style={cardStyles}>
-                                {content}
+                            <p className="main-text">
+                                {isTextExpanded ? content : textCutter(content)}
                             </p>
                             {!isTextExpanded && content.length > 720 && (
                                 <a className="main-text" onClick={readMore}>

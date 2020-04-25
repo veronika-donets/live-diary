@@ -29,12 +29,7 @@ const LoginForm = () => (
                         placeholder="Password"
                         type="password"
                     />
-
-                    <Button
-                        className="login-button"
-                        fluid
-                        size="large"
-                    >
+                    <Button className="login-button" fluid size="large">
                         Login
                     </Button>
                 </Segment>

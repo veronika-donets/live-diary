@@ -19,7 +19,7 @@
 
 .main-container {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     flex-direction: column;
     background-color: $light-beige;
 }
@@ -48,6 +48,11 @@
     padding: 1rem;
 }
 
+p {
+    text-align: justify;
+    font-size: 1.2rem;
+}
+
 .tiny-gray-text {
     font-size: 0.8em !important;
     color: rgba(0, 0, 0, .4);
@@ -62,4 +67,8 @@
 .login-text {
     color: $dark-olive !important;
     text-align: center;
+}
+
+.create-post-container {
+    padding: 2rem;
 }
