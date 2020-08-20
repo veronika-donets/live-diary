@@ -1,7 +1,9 @@
 import React from 'react';
 import { Container, Image, Menu } from 'semantic-ui-react';
 import logo from '../images/diary.svg';
+import salad from '../images/salad.svg';
 import avatar from '../images/fairy.png';
+import recipebook from '../images/recipebook.svg';
 
 const Header = () => {
     const user = true;
@@ -18,6 +20,11 @@ const Header = () => {
                 </Menu.Item>
                 {user && (
                     <Menu.Item as="a" href="/create-post">
+                        <Image
+                            size="mini"
+                            src={salad}
+                            style={{ marginRight: '1.5em' }}
+                        />
                         Create Post
                     </Menu.Item>
                 )}

@@ -4,7 +4,8 @@ import {
     Card,
     Checkbox,
     Container,
-    Form, Icon,
+    Form,
+    Icon,
     Message,
     TextArea,
 } from 'semantic-ui-react';
@@ -68,7 +69,6 @@ const CreatePost = () => {
                     )}
 
                     <div className="space-between main-text">
-
                         <Form.Field
                             control={Checkbox}
                             required

@@ -11,6 +11,7 @@ import {
     Rating,
 } from 'semantic-ui-react';
 import { content, helperArr, textCutter, title } from '../../utils/utils';
+import salad from '../../images/salad.svg';
 
 const Post = () => {
     const [isTextExpanded, setTextExpanded] = useState(false);
@@ -60,6 +61,12 @@ const Post = () => {
                 <Feed>
                     <Feed className="column">
                         <Container textAlign="justified">
+                            <Image
+                                size="medium"
+                                circular
+                                src={salad}
+                                style={{ marginRight: '1.5em' }}
+                            />
                             <p className="main-text">
                                 {isTextExpanded ? content : textCutter(content)}
                             </p>

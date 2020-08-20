@@ -16,7 +16,11 @@ const Main = () => (
             <Route exact path="/user-profile" component={UserProfile} />
             <Route exact path="/register" component={RegisterForm} />
             <Route exact path="/login" component={LoginForm} />
-            <Route exact path="/terms-and-conditions" component={TermsAndConditions} />
+            <Route
+                exact
+                path="/terms-and-conditions"
+                component={TermsAndConditions}
+            />
         </Switch>
     </Container>
 );
