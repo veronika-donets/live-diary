@@ -3,7 +3,6 @@ import { Container, Image, Menu } from 'semantic-ui-react';
 import logo from '../images/diary.svg';
 import salad from '../images/salad.svg';
 import avatar from '../images/fairy.png';
-import recipebook from '../images/recipebook.svg';
 
 const Header = () => {
     const user = false;
