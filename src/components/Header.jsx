@@ -6,7 +6,7 @@ import avatar from '../images/fairy.png';
 import recipebook from '../images/recipebook.svg';
 
 const Header = () => {
-    const user = true;
+    const user = false;
     return (
         <Menu fixed="top" inverted className="custom-header">
             <Container>
